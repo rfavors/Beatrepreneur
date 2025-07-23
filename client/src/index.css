@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+  
+  /* Beatrepreneur custom colors */
+  --dark: hsl(0, 0%, 10.2%);
+  --dark-secondary: hsl(0, 0%, 17.6%);
+  --accent-orange: hsl(16, 100%, 60%);
+  --accent-gold: hsl(51, 100%, 50%);
+  --text-secondary: hsl(0, 0%, 70%);
+}
+
+.dark {
+  --background: hsl(0, 0%, 10.2%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(0, 0%, 17.6%);
+  --muted-foreground: hsl(0, 0%, 70%);
+  --popover: hsl(0, 0%, 10.2%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(0, 0%, 10.2%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(0, 0%, 17.6%);
+  --input: hsl(0, 0%, 17.6%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(0, 0%, 17.6%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(0, 0%, 17.6%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(0, 0%, 83.9%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    background: hsl(var(--dark));
+    color: hsl(0, 0%, 98%);
+  }
+  
+  .font-orbitron {
+    font-family: 'Orbitron', monospace;
+  }
+}
+
+@layer utilities {
+  .gradient-bg {
+    background: linear-gradient(135deg, hsl(var(--dark)) 0%, hsl(var(--dark-secondary)) 50%, hsl(var(--dark)) 100%);
+  }
+  
+  .hero-gradient {
+    background: linear-gradient(135deg, hsla(16, 100%, 60%, 0.1) 0%, hsla(51, 100%, 50%, 0.05) 50%, hsla(0, 0%, 10.2%, 0.9) 100%);
+  }
+  
+  .glass-effect {
+    backdrop-filter: blur(10px);
+    background: hsla(0, 0%, 17.6%, 0.8);
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, #D4AF37, #FFD700, #F4E4BC, #D4AF37);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .hover-glow:hover {
+    box-shadow: 0 0 30px hsla(16, 100%, 60%, 0.3);
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .music-visualizer {
+    display: flex;
+    align-items: end;
+    gap: 2px;
+    height: 20px;
+  }
+  
+  .bar {
+    width: 3px;
+    background: linear-gradient(to top, hsl(var(--accent-orange)), hsl(var(--accent-gold)));
+    animation: music-bar 1s ease-in-out infinite alternate;
+  }
+  
+  .bar:nth-child(2) { animation-delay: 0.1s; }
+  .bar:nth-child(3) { animation-delay: 0.2s; }
+  .bar:nth-child(4) { animation-delay: 0.3s; }
+  .bar:nth-child(5) { animation-delay: 0.4s; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes music-bar {
+  0% { height: 10%; }
+  100% { height: 100%; }
+}
